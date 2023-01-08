@@ -1,0 +1,19 @@
+{
+    "name": "Sample-WebExtension",
+    "description": "description of sample webextension",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": {
+            "16": "assets/icon_16x16.png",
+            "48": "assets/icon_48x48.png",
+            "128": "assets/icon_128x128.png"
+        }
+    },
+    "icons": {
+        "16": "assets/icon_16x16.png",
+        "48": "assets/icon_48x48.png",
+        "128": "assets/icon_128x128.png"
+    }
+}
