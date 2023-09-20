@@ -1,5 +1,7 @@
-![Web Extension Template](./assets/banner.png)
+![Web Extension Template](./assets/banner-harpoon.png)
 
 >
-> Starter Kit for Developing Web Extensions
+> Web Extension inspired by vim extension '[Harpoon](https://github.com/ThePrimeagen/harpoon)'.
+>
+> Move between marked tabs with Ease.
 >

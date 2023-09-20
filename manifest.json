@@ -1,6 +1,6 @@
 {
-    "name": "Sample-WebExtension",
-    "description": "description of sample webextension",
+    "name": "Wb-Harpoon",
+    "description": "Web Extension to move between with marked tabs with ease",
     "version": "0.0.1",
     "manifest_version": 3,
     "action": {
