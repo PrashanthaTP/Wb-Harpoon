@@ -9,6 +9,7 @@ chrome.runtime.onMessage.addListener( (message, sender, sendResponse) => {
 			(async() => {
 				const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
 				tabList.push(tab)
+				chrome.storage.local.set({tabList})
 				sendResponse({ tab })
 			})()
 			//sendResponse({tab:"hi"})

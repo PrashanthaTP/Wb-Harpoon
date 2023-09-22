@@ -21,3 +21,6 @@ const updateCurrentTab = async () => {
     console.log(responseFromBackgroundScript);
 };
 updateBtn.addEventListener("click", () => updateCurrentTab());
+
+chrome.storage.local.get(["tabList"]).then((res)=>console.log(res))
+
