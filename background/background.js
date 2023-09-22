@@ -1,6 +1,11 @@
 console.log("Hello From Background Script")
 
 let tabList = []
+chrome.storage.local.get(['tabList']).then(res=>{
+	if(res.tabList){
+		tabList = res.tabList
+	}
+})
 chrome.runtime.onMessage.addListener( (message, sender, sendResponse) => {
 	//let senderInfo = sender.tab ? "content script : " + sender.tab.url : "extension"
 	console.log(message)
