@@ -6,10 +6,12 @@
 body{
 	--color-primary: #030303;
 	--color-secondary: #151515;
+	--color-tertiary: #0d0b0b;
 	--font-primary: white;
 	--padding-primary: 0.5rem;
 	--margin-primary: 0.5rem;
-	--radius-primary: 0.5rem
+	--radius-primary: 0.5rem;
+	--link-color:#68b3f8;
 }
 
 body{
@@ -32,10 +34,17 @@ body{
 .tab-list-item-text{
 	justify-self:left;
 }
+
+.tab-list-item-text a {
+	color: var(--link-color);
+}
 .tab-list-item-img{
 	justify-self: center;
 	display: grid;
 	position:relative;
+	background: var(--color-tertiary);
+	padding: var(--padding-primary);
+	border-radius: var(--radius-primary);
 }
 
 .tab-list-item-img{
