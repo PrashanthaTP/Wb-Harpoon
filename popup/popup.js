@@ -10,7 +10,7 @@ chrome.storage.local.get(["tabList"]).then((res)=>{
 	let desc = tabItem.querySelector(".tab-desc")
 	img.src = tab.favIconUrl
 	link.href = tab.url
-	link.textContent = tab.url.split("/").pop()
+	link.textContent = tab.url.replace(/\/$/,"").split("/").pop()
 	desc.textContent = tab.title
 	tabListNode.appendChild(tabItem)
     }
