@@ -5,11 +5,22 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Sample Web Extension</title>
-		<script src="popup.js" defer></script>
+        <link rel="stylesheet" type="text/css" href="popup.css">
+        <script src="popup.js" defer></script>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
-        <p>Extension is Running</p>
-		<button id="update-btn">update</button>
+        <h1>Wb-Harpoon</h1>
+        <ul class="tab-list"></ul>
+        <template id="template-tab-list-item">
+            <li class="tab-list-item-container">
+                <div class="tab-list-item-container-img">
+                    <img class="tab-favicon">
+                </div>
+                <div class="tab-list-item-container-text">
+                    <a href="#" class="tab-link"></a>
+                    <p class="tab-desc"></p>
+                </div>
+            </li>
+        </template>
     </body>
 </html>

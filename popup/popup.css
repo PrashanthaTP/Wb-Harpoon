@@ -1,0 +1,25 @@
+body{
+	--color-primary: #030303;
+	--color-secondary: #151515;
+	--font-primary: white;
+	--padding-primary: 0.5rem;
+	--margin-primary: 0.5rem;
+	--radius-primary: 0.5rem
+}
+
+body{
+	width : 30rem;
+	padding: var(--padding-primary);
+	background: var(--color-primary);
+	color: var(--font-primary);
+}
+
+.tab-list{}
+.tab-list-item-container{
+	display: grid;
+	grid-template-columns: 2fr 8fr;
+
+	background: var(--color-secondary);
+	border-radius: var(--radius-primary);
+	margin: var(--margin-primary) auto;
+}

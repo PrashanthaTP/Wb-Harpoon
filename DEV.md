@@ -28,3 +28,8 @@
 > response function asynchronously.
 
 
+
+## Template Element
+
++ [Mozilla : Docs on template](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
+
