@@ -33,3 +33,14 @@
 
 + [Mozilla : Docs on template](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template)
 
+
+## Nodes
+
++ [Stackoverflow: Closest selector](https://stackoverflow.com/questions/70195994/event-target-dataset-returning-undefined-javascript)
+
+
+## Popup
+
++ [Stackoverflow: Links in Popup](https://stackoverflow.com/questions/34734175/pure-html-chrome-extension-link-not-working#:~:text=Why%20aren't%20the%20links%20working%3F&text=Any%20link%20in%20the%20popup,click%20listener%20that%20executes%20chrome.)
++ [Stackoverflow: New tab without closing popup](https://stackoverflow.com/questions/29542742/chrome-extension-open-new-tab-without-losing-popup-focus/)
+

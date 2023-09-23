@@ -33,6 +33,7 @@ body{
 }
 .tab-list-item-text{
 	justify-self:left;
+	cursor:pointer;
 }
 
 .tab-list-item-text a {

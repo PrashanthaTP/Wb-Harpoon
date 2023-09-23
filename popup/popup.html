@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Sample Web Extension</title>
         <link rel="stylesheet" type="text/css" href="popup.css">
-        <script src="popup.js" defer></script>
+        <script src="popup.js" type="module" defer></script>
     </head>
     <body>
         <h1>Wb-Harpoon</h1>
         <ul class="tab-list"></ul>
         <template id="template-tab-list-item">
-            <li class="tab-list-item-container">
+            <li class="tab-list-item-container" data-id>
                 <div class="tab-list-item-img">
                     <img class="tab-favicon">
                 </div>
