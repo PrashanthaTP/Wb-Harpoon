@@ -9,6 +9,7 @@ let tabList = []
 const init = async () => {
 	//await is here important
 	await chrome.storage.local.get(["tabList"]).then((res) => {
+		console.log(tabList)
 		tabList = res.tabList;
 		if(tabList.length===0){
 			messageNode.style.display = "block"	
@@ -23,7 +24,8 @@ const init = async () => {
 			let desc = tabItem.querySelector(".tab-desc")
 			img.src = tab.favIconUrl
 			link.href = tab.url
-			link.textContent = tab.url.replace(/\/$/, "").split("/").pop()
+			link.textContent = tab.url.replace(/\/$/, "").split("/").pop().substring(0,25) + " ...";
+			
 			desc.textContent = tab.title
 			tabItem.querySelector("li[data-id]").dataset.id = tab.id
 			tabListNode.appendChild(tabItem)
