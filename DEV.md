@@ -44,3 +44,16 @@
 + [Stackoverflow: Links in Popup](https://stackoverflow.com/questions/34734175/pure-html-chrome-extension-link-not-working#:~:text=Why%20aren't%20the%20links%20working%3F&text=Any%20link%20in%20the%20popup,click%20listener%20that%20executes%20chrome.)
 + [Stackoverflow: New tab without closing popup](https://stackoverflow.com/questions/29542742/chrome-extension-open-new-tab-without-losing-popup-focus/)
 
+## Context Invalidated
++ [Stackoverflow: avoid extension context invalidation](https://stackoverflow.com/questions/53939205/how-to-avoid-extension-context-invalidated-errors-when-messaging-after-an-exte)
+  * Refresh web page
+
+
+## Styling in JS
+
++ [Stackoverflow: Change css property in JS](https://stackoverflow.com/questions/15241915/how-to-change-css-property-using-javascript)
+
+## Animations in JS
+
++ [Mozilla Docs on Web Animations Api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
++ [Stackoverflow: how-to-dynamically-create-keyframe-css-animations](https://stackoverflow.com/a/67586908)
