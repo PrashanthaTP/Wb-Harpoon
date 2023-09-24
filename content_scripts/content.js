@@ -11,18 +11,18 @@ const createToast = () => {
     const toastStyle = {
         "visibility": "hidden",
         "position": "fixed",
-        "fontSize":"1rem",
-        "textAlign":"center",
+        "fontSize": "1rem",
+        "textAlign": "center",
         "padding": "0.5rem",
         "background": "black",
-        "color":"white",
-        "minWidth":"16rem",
-        "marginLeft":"-8rem",
+        "color": "white",
+        "minWidth": "16rem",
+        "marginLeft": "-8rem",
         "bottom": "5rem",
         "left": "50%",
         "zIndex": "5",
         "opacity": "0",
-        "borderRadius":"0.3rem"
+        "borderRadius": "0.3rem"
     }
 
     Object.assign(toastNode.style, toastStyle)
@@ -51,10 +51,10 @@ document.addEventListener('keydown', (e) => {
         console.log("A pressed")
         addTab()
         toastNode.style.visibility = "visible"
-        toastNode.animate([{opacity: 0, transform: `translateY(0)` },
-                            { opacity: 1, transform: `translateY(10px)` },
-                            { opacity: 0,offset:0.8} ],
-                            { duration: 3000, iterations: 1 })
+        toastNode.animate([{ opacity: 0, transform: `translateY(0)` },
+        { opacity: 1, transform: `translateY(10px)` },
+        { opacity: 0, offset: 0.8 }],
+            { duration: 3000, iterations: 1 })
         isValidPress = false
     }
     if (e.shiftKey && e.key === 'E') {

@@ -11,11 +11,11 @@ const init = async () => {
 	await chrome.storage.local.get(["tabList"]).then((res) => {
 		console.log(tabList)
 		tabList = res.tabList;
-		if(tabList.length===0){
-			messageNode.style.display = "block"	
+		if (tabList.length === 0) {
+			messageNode.style.display = "block"
 			messageNode.innerText = "No tabs to show. Start marking tabs by Shift + e , a"
-		}else{
-			messageNode.style.display = "none"	
+		} else {
+			messageNode.style.display = "none"
 		}
 		for (let tab of res.tabList) {
 			let tabItem = templateNode.content.cloneNode(true)
@@ -24,8 +24,8 @@ const init = async () => {
 			let desc = tabItem.querySelector(".tab-desc")
 			img.src = tab.favIconUrl
 			link.href = tab.url
-			link.textContent = tab.url.replace(/\/$/, "").split("/").pop().substring(0,25) + " ...";
-			
+			link.textContent = tab.url.replace(/\/$/, "").split("/").pop().substring(0, 25) + " ...";
+
 			desc.textContent = tab.title
 			tabItem.querySelector("li[data-id]").dataset.id = tab.id
 			tabListNode.appendChild(tabItem)
@@ -45,7 +45,7 @@ const setEventHandler = () => {
 			//const link = e.target.querySelector(".tab-link")
 			const parent = e.target.closest("[data-id]")
 			//console.log(parent.dataset.id)
-			await chrome.tabs.get(Number.parseInt(parent.dataset.id), async() => {
+			await chrome.tabs.get(Number.parseInt(parent.dataset.id), async () => {
 				if (chrome.runtime.lastError) {
 					console.log(chrome.runtime.lastError)
 					await chrome.tabs.create({ url: parent.querySelector(".tab-link").href })
@@ -58,20 +58,20 @@ const setEventHandler = () => {
 		})
 	})
 
-	tabListNode.addEventListener('click',async(e)=>{
-		let isDeleteButton = e.target.tagName==="BUTTON" && e.target.classList.contains("tab-delete")
-		let isDeleteIcon = e.target.tagName==="I" && e.target.closest(".tab-delete")!==null
-		if(isDeleteButton || isDeleteIcon){
+	tabListNode.addEventListener('click', async (e) => {
+		let isDeleteButton = e.target.tagName === "BUTTON" && e.target.classList.contains("tab-delete")
+		let isDeleteIcon = e.target.tagName === "I" && e.target.closest(".tab-delete") !== null
+		if (isDeleteButton || isDeleteIcon) {
 			console.log("Clicked")
 			const parent = e.target.closest("[data-id]")
-			tabList = tabList.filter(tab=>{
-				console.log(tab.id,parent.dataset.id)
+			tabList = tabList.filter(tab => {
+				console.log(tab.id, parent.dataset.id)
 				return tab.id !== Number.parseInt(parent.dataset.id)
 			})
 			console.log(tabList.length)
-			await chrome.storage.local.set({tabList})
+			await chrome.storage.local.set({ tabList })
 			tabListNode.innerHTML = ""
-			await chrome.runtime.sendMessage({"type":"RELOAD_TABLIST_FROM_STORAGE"})
+			await chrome.runtime.sendMessage({ "type": "RELOAD_TABLIST_FROM_STORAGE" })
 			init()
 		}
 	})

@@ -13,10 +13,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	console.log(message)
 	switch (message.type) {
 		case "RELOAD_TABLIST_FROM_STORAGE":
-			(async ()=>{
+			(async () => {
 				await readLocalStorage()
-				sendResponse({"res":"DONE"});
-			})()	
+				sendResponse({ "res": "DONE" });
+			})()
 			break
 		case "GET_ACTIVETAB":
 			(async () => {
@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	//sendResponse({ message: "response from background script : message received ", received: message })
 });
 
-const init = async()=>{
+const init = async () => {
 	await readLocalStorage()
 }
 
