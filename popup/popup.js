@@ -2,11 +2,20 @@ console.log("Hello From Popup");
 
 const tabListNode = document.querySelector(".tab-list")
 const templateNode = document.querySelector("#template-tab-list-item")
+const messageNode = document.querySelector("#message")
 
 let mapNodeTab = {}
+let tabList = []
 const init = async () => {
 	//await is here important
 	await chrome.storage.local.get(["tabList"]).then((res) => {
+		tabList = res.tabList;
+		if(tabList.length===0){
+			messageNode.style.display = "block"	
+			messageNode.innerText = "No tabs to show. Start marking tabs by Shift + e , a"
+		}else{
+			messageNode.style.display = "none"	
+		}
 		for (let tab of res.tabList) {
 			let tabItem = templateNode.content.cloneNode(true)
 			let img = tabItem.querySelector(".tab-favicon")
@@ -38,6 +47,21 @@ const setEventHandler = () => {
 			await chrome.windows.update(mapNodeTab[parent.dataset.id].windowId, { focused: true })
 			//}
 		})
+	})
+
+	tabListNode.addEventListener('click',async(e)=>{
+		if(e.target.tagName==="BUTTON" && e.target.classList.contains("tab-delete")){
+			console.log("Clicked")
+			const parent = e.target.closest("[data-id]")
+			tabList = tabList.filter(tab=>{
+				console.log(tab.id,parent.dataset.id)
+				return tab.id !== Number.parseInt(parent.dataset.id)
+			})
+			console.log(tabList.length)
+			await chrome.storage.local.set({tabList})
+			tabListNode.innerHTML = ""
+			init()
+		}
 	})
 
 }

@@ -24,7 +24,7 @@ body{
 .tab-list{}
 .tab-list-item-container{
 	display: grid;
-	grid-template-columns: 2fr 8fr;
+	grid-template-columns: 2fr 8fr 1fr;
 
 	background: var(--color-secondary);
 	border-radius: var(--radius-primary);
@@ -51,4 +51,15 @@ body{
 .tab-list-item-img{
 	justify-content:center;
 	align-items:center;
+}
+
+.tab-list-item-actions{
+	display:grid;
+	justify-content:center;
+	align-items: center;
+}
+
+#message{
+	color:grey;
+	margin: var(--margin-primary) 0;
 }
