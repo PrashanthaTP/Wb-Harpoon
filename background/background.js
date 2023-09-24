@@ -12,10 +12,17 @@ chrome.runtime.onMessage.addListener( (message, sender, sendResponse) => {
 	switch (message.type) {
 		case "GET_ACTIVETAB":
 			(async() => {
-				const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
-				tabList.push(tab)
+				const [currTab] = await chrome.tabs.query({ active: true, currentWindow: true })
+
+				for(let tab of tabList){
+					if(tab.id===currTab.id){
+						sendResponse({ currTab })
+						return true;
+					}
+				}
+				tabList.push(currTab)
 				chrome.storage.local.set({tabList})
-				sendResponse({ tab })
+				sendResponse({ currTab })
 			})()
 			//sendResponse({tab:"hi"})
 			return true
