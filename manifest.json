@@ -25,5 +25,12 @@
             "js": ["content_scripts/content.js"]
         }
     ],
-    "permissions":["activeTab","tabs","storage"]
+    "permissions":["activeTab","tabs","storage"],
+    "commands":{
+        "_execute_action":{
+            "suggested_key":{
+                "default":"Ctrl+M"
+            }
+        }
+    }
 }
