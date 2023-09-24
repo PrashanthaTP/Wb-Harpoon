@@ -47,6 +47,9 @@ body{
 	padding: var(--padding-primary);
 	border-radius: var(--radius-primary);
 }
+.tab-list-item-img img{
+	max-height:2rem;
+}
 
 .tab-list-item-img{
 	justify-content:center;
@@ -59,6 +62,12 @@ body{
 	align-items: center;
 }
 
+.tab-delete{
+	color:red;
+	border:none;
+	background:var(--color-primary);
+	cursor:pointer;
+}
 #message{
 	color:grey;
 	margin: var(--margin-primary) 0;

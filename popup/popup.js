@@ -50,7 +50,9 @@ const setEventHandler = () => {
 	})
 
 	tabListNode.addEventListener('click',async(e)=>{
-		if(e.target.tagName==="BUTTON" && e.target.classList.contains("tab-delete")){
+		let isDeleteButton = e.target.tagName==="BUTTON" && e.target.classList.contains("tab-delete")
+		let isDeleteIcon = e.target.tagName==="I" && e.target.closest(".tab-delete")!==null
+		if(isDeleteButton || isDeleteIcon){
 			console.log("Clicked")
 			const parent = e.target.closest("[data-id]")
 			tabList = tabList.filter(tab=>{
