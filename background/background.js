@@ -1,27 +1,38 @@
 console.log("Hello From Background Script")
 
 let tabList = []
-chrome.storage.local.get(['tabList']).then(res=>{
-	if(res.tabList){
-		tabList = res.tabList
-	}
-})
-chrome.runtime.onMessage.addListener( (message, sender, sendResponse) => {
+const readLocalStorage = () => {
+	chrome.storage.local.get(['tabList']).then(res => {
+		if (res.tabList) {
+			tabList = res.tabList
+		}
+	})
+}
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 	//let senderInfo = sender.tab ? "content script : " + sender.tab.url : "extension"
 	console.log(message)
 	switch (message.type) {
+		case "RELOAD_TABLIST_FROM_STORAGE":
+			(async ()=>{
+				await readLocalStorage()
+				sendResponse({"res":"DONE"});
+			})()	
+			break
 		case "GET_ACTIVETAB":
-			(async() => {
+			(async () => {
 				const [currTab] = await chrome.tabs.query({ active: true, currentWindow: true })
 
-				for(let tab of tabList){
-					if(tab.id===currTab.id){
+				console.log(tabList)
+				for (let tab of tabList) {
+					if (tab.id === currTab.id) {
+						console.log("Duplicate tab")
 						sendResponse({ currTab })
 						return true;
 					}
 				}
 				tabList.push(currTab)
-				chrome.storage.local.set({tabList})
+				//await chrome.storage.local.set({tabList})
+				chrome.storage.local.set({ tabList })
 				sendResponse({ currTab })
 			})()
 			//sendResponse({tab:"hi"})
@@ -32,3 +43,8 @@ chrome.runtime.onMessage.addListener( (message, sender, sendResponse) => {
 	//sendResponse({ message: "response from background script : message received ", received: message })
 });
 
+const init = async()=>{
+	await readLocalStorage()
+}
+
+init()

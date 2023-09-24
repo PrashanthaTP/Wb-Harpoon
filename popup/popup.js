@@ -64,6 +64,7 @@ const setEventHandler = () => {
 			console.log(tabList.length)
 			await chrome.storage.local.set({tabList})
 			tabListNode.innerHTML = ""
+			await chrome.runtime.sendMessage({"type":"RELOAD_TABLIST_FROM_STORAGE"})
 			init()
 		}
 	})

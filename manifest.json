@@ -17,7 +17,8 @@
         "128": "assets/icon_128x128.png"
     },
     "background": {
-        "service_worker": "background/background.js"
+        "service_worker": "background/background.js",
+        "type":"module"
     },
     "content_scripts": [
         {
