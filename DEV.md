@@ -57,3 +57,7 @@
 
 + [Mozilla Docs on Web Animations Api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API)
 + [Stackoverflow: how-to-dynamically-create-keyframe-css-animations](https://stackoverflow.com/a/67586908)
+
+## Tabs
+
++ [Stackoverflow : Check if tab with given id exists](https://stackoverflow.com/questions/16571393/the-best-way-to-check-if-tab-with-exact-id-exists-in-chrome#:~:text=tabs.,')%3B%20%7D%20%7D)%3B)

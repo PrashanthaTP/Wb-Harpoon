@@ -45,8 +45,15 @@ const setEventHandler = () => {
 			//const link = e.target.querySelector(".tab-link")
 			const parent = e.target.closest("[data-id]")
 			//console.log(parent.dataset.id)
-			await chrome.tabs.update(Number.parseInt(parent.dataset.id), { active: true })
-			await chrome.windows.update(mapNodeTab[parent.dataset.id].windowId, { focused: true })
+			await chrome.tabs.get(Number.parseInt(parent.dataset.id), async() => {
+				if (chrome.runtime.lastError) {
+					console.log(chrome.runtime.lastError)
+					await chrome.tabs.create({ url: parent.querySelector(".tab-link").href })
+				} else {
+					await chrome.tabs.update(Number.parseInt(parent.dataset.id), { active: true })
+					await chrome.windows.update(mapNodeTab[parent.dataset.id].windowId, { focused: true })
+				}
+			})
 			//}
 		})
 	})
