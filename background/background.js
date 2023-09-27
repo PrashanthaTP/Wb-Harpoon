@@ -8,7 +8,12 @@ const readLocalStorage = () => {
 		}
 	})
 }
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+
+const setLocalStorage = async (k,value) => {
+	await chrome.storage.local.set({k,value})
+}
+
+const messageListener = (message, sender, sendResponse) => {
 	//let senderInfo = sender.tab ? "content script : " + sender.tab.url : "extension"
 	console.log(message)
 	switch (message.type) {
@@ -30,9 +35,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 						return true;
 					}
 				}
+
 				tabList.push(currTab)
-				//await chrome.storage.local.set({tabList})
-				chrome.storage.local.set({ tabList })
+				await chrome.storage.local.set({tabList})
+				//await setLocalStorage("tabList", tabList )
 				sendResponse({ currTab })
 			})()
 			//sendResponse({tab:"hi"})
@@ -41,10 +47,56 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 			break
 	}
 	//sendResponse({ message: "response from background script : message received ", received: message })
-});
+}
+
+
+const tabUpdateListener = async(tabId, changeInfo, tab) => {
+	console.log("tab listener")
+	console.log(tabList,changeInfo)
+	if(changeInfo.tabStatus !== "complete"){
+		return;
+	}
+	tabList = tabList.map(markedTab =>{
+		if(markedTab.id === tabId){
+			//tab need to updated
+			console.log("Updated")
+			console.log(markedTab)
+			console.table(tab)
+			return tab;
+		}else{
+			return markedTab
+		}
+	})	
+	await chrome.storage.local.set({ tabList })
+}
+
+
+const tabDetachListener = async(tabId, detachInfo) => {
+	console.log("tab detach listener")
+	const tab = await chrome.tabs.get(tabId)
+	tabList = tabList.map(markedTab =>{
+		if(markedTab.id === tabId){
+			//tab need to updated
+			console.log("Updated")
+			console.log(markedTab)
+			console.table(tab)
+			return tab;
+		}else{
+			return markedTab
+		}
+	})	
+	await chrome.storage.local.set({ tabList })
+}
 
 const init = async () => {
+
+	console.log(tabList)
 	await readLocalStorage()
+	console.log(tabList)
+	chrome.runtime.onMessage.addListener(messageListener)
+	chrome.tabs.onUpdated.addListener(tabUpdateListener)
+	chrome.tabs.onDetached.addListener(tabDetachListener)
 }
+
 
 init()
