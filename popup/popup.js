@@ -3,10 +3,24 @@ console.log("Hello From Popup");
 const tabListNode = document.querySelector(".tab-list")
 const templateNode = document.querySelector("#template-tab-list-item")
 const messageNode = document.querySelector("#message")
+const statusnode = document.querySelector("#extension-status")
 
 let mapNodeTab = {}
 let tabList = []
+let allOk = false
 const init = async () => {
+	statusnode.innerText = "loading..."
+	while (!allOk){
+		await chrome.storage.local.get(["allOk"]).then((res) => {
+			allOk = res.allOk
+			if(res.allOk){
+				statusnode.style.background = 'lime'	
+			}else{
+				statusnode.style.background = 'red'	
+			}
+		})
+	}
+	statusnode.innerText = ""
 	//await is here important
 	await chrome.storage.local.get(["tabList"]).then((res) => {
 		console.log(tabList)

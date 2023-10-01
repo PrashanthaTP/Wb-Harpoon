@@ -72,3 +72,10 @@ body{
 	color:grey;
 	margin: var(--margin-primary) 0;
 }
+
+#extension-status{
+	width:1rem;
+	height:1rem;
+	margin:1rem;
+	background:transparent;
+}
