@@ -30,7 +30,7 @@ const createToast = () => {
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     let senderInfo = sender.tab ? "content script : " + sender.tab.url : "extension"
-    console.log("(content script): Message Received : from <-" + senderInfo);
+    //console.log("(content script): Message Received : from <-" + senderInfo);
     sendResponse({
         message: "response from content script : message received ",
         received: message,
@@ -46,9 +46,9 @@ const addTab = async () => {
 }
 let isValidPress = false
 document.addEventListener('keydown', (e) => {
-    console.log(e.key)
+    //console.log(e.key)
     if (e.key === 'a' && isValidPress) {
-        console.log("A pressed")
+        //console.log("A pressed")
         addTab()
         toastNode.style.visibility = "visible"
         toastNode.animate([{ opacity: 0, transform: `translateY(0)` },
@@ -59,7 +59,7 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.shiftKey && e.key === 'E') {
         isValidPress = true;
-        console.log("Shift + E")
+        //console.log("Shift + E")
         setTimeout(() => {
             isValidPress = false
         }, 1000)
